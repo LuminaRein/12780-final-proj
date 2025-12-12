@@ -1,0 +1,12 @@
+{
+  "name": "Container Hello World",
+  "image": "python:3.12-slim",
+  "postCreateCommand": "pip install --upgrade pip",
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "ms-python.python"
+      ]
+    }
+  }
+}
