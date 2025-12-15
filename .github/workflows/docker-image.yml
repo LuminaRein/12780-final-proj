@@ -17,4 +17,4 @@ jobs:
         run: docker build . --file Dockerfile --tag final-proj:ci
 
       - name: Run test
-        run: docker run --rm final-proj:ci bash -lc "pytest ./test_final_proj.py -v"
+        run: docker run --rm final-proj:ci bash -lc "pip install pytest pytest-django && pytest ./test_final_proj.py -v"
