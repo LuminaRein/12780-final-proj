@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Clickable Hex Grid</title>
+  <link rel="stylesheet" href="./style.css" />
+  <meta name="csrf-token" content="{{ csrf_token }}">
+</head>
+<body>
+  <div class="wrap">
+    <div class="bar">
+      <div><strong>Clickable Hex Grid</strong> (SVG)</div>
+      <div class="right">
+        <button id="clearBtn" class="btn danger" type="button">Clear Canvas</button>
+        <div id="msg">Click any hexagon → <strong>clicked</strong></div>
+      </div>
+    </div>
+
+    <div class="card">
+      <svg id="svg" viewBox="0 0 980 720" role="img" aria-label="Clickable hex grid"></svg>
+
+      <div class="canvasActions">
+        <button id="exportCsvBtn" class="btn" type="button">Export XLSX</button>
+        <button id="clearDbBtn" class="btn danger" type="button">Clear DB</button>
+      </div>
+    </div>
+
+    <div class="controls">
+      <button id="shapeBtn" class="btn" type="button" aria-pressed="false">
+        <span id="shapeDot" class="dot"></span>
+        <span>Create Shape</span>
+      </button>
+
+      <div id="shapePanel" class="panel hidden">
+        <div class="seg" role="radiogroup" aria-label="Shape type">
+          <label class="segItem">
+            <input type="radio" name="shapeType" value="circle" checked />
+            <span>Circle</span>
+          </label>
+          <label class="segItem">
+            <input type="radio" name="shapeType" value="triangle" />
+            <span>Triangle</span>
+          </label>
+        </div>
+
+        <div id="circleControls" class="subctrl">
+          <label class="lbl" for="radiusInput">Radius</label>
+          <input id="radiusInput" class="inp" type="number" min="0" step="1" placeholder="e.g. 4" />
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="./ops.js" defer></script>
+</body>
+</html>
