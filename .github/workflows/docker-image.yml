@@ -30,16 +30,16 @@ jobs:
       - name: Tag image for GHCR
         if: github.event_name == 'push' && github.ref == 'refs/heads/main'
         run: |
-          IMAGE="ghcr.io/${{ github.repository }}"
+          IMAGE="ghcr.io/${GITHUB_REPOSITORY,,}"
           docker tag final-proj:ci "${IMAGE}:latest"
-          docker tag final-proj:ci "${IMAGE}:${{ github.sha }}"
+          docker tag final-proj:ci "${IMAGE}:${GITHUB_SHA}"
 
-      - name: Push image
+      - name: Push image to GHCR
         if: github.event_name == 'push' && github.ref == 'refs/heads/main'
         run: |
-          IMAGE="ghcr.io/${{ github.repository }}"
+          IMAGE="ghcr.io/${GITHUB_REPOSITORY,,}"
           docker push "${IMAGE}:latest"
-          docker push "${IMAGE}:${{ github.sha }}"
+          docker push "${IMAGE}:${GITHUB_SHA}"
 
       - name: Log in to GHCR
         if: github.event_name == 'push' && github.ref == 'refs/heads/main'
